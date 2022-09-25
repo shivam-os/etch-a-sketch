@@ -1,0 +1,77 @@
+/* Global Variables */
+:root {
+  --black: #222222;
+  --yellow:#ffd139;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: var(--yellow);
+  margin: 0;
+  padding: 1.2rem;
+  border-bottom: 2px solid gray;
+}
+
+h1 {
+  font-family: "Press Start 2P";
+  font-size: 1.7rem;
+  text-align: center;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+/* ------ Left container ------ */
+.left-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 20%;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  box-sizing: content-box;
+  width: 4rem;
+  background-color: #FFFFFF;
+  color: var(--black);
+  box-shadow: 3px 3px var(--black);;
+  border: 1px solid var(--black);;
+}
+
+button:hover {
+  box-shadow: none;
+  background-color: var(--yellow);
+  color: #FFFFFF;
+}
+
+/* ------ Right container ------ */
+.sketch-area {
+  height: 35rem;
+  width: 35rem;
+  border: 1px solid var(--black);
+  box-shadow: 3px 3px var(--black);
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+}
+
+.grid-box {
+  border: 1px solid var(--black);
+}
