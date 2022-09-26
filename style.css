@@ -68,10 +68,8 @@ button:hover {
   border: 1px solid var(--black);
   box-shadow: 3px 3px var(--black);
   display: grid;
-  grid-template-columns: repeat(30, 1fr);
-  grid-template-rows: repeat(30, 1fr);
 }
 
-.grid-box {
+.grid-cell {
   border: 1px solid var(--black);
 }
