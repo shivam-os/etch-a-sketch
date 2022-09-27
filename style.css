@@ -61,6 +61,12 @@ button:hover {
   color: #FFFFFF;
 }
 
+.active {
+  box-shadow: none;
+  background-color: var(--yellow);
+  color: #FFFFFF;
+}
+
 /* ------ Right container ------ */
 .sketch-area {
   height: 35rem;

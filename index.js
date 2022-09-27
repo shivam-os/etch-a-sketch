@@ -1,11 +1,16 @@
 //For grid cell color
 const DEFAULT_COLOR = "#000000";
-const DEFAULT_MODE = "black";
+const DEFAULT_MODE = "blackBtn";
 const DEFAULT_SIZE = 16;
 
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
 let currentSize = DEFAULT_SIZE;
+
+/*
+4 modes: blackBtn, colorBtn, rainbowBtn, eraserBtn
+Button active effect using .active class
+*/
 
 //Set up the rows & columns based on user input
 const sketchArea = document.querySelector(".sketch-area");
@@ -22,30 +27,50 @@ function main() {
 }
 
 //Set the current mode & activate it
-function setCurrentMode(mode) {
-  currentMode = mode;
-  activateMode(mode);
+function setCurrentMode(newMode) {
+  activateMode(newMode);
+  currentMode = newMode;
 }
 
-//When a mode is activated, call their respective functions
-function activateMode() {
-  if (currentMode === "black") {
-    cellColor = "#000000";
-  } else if (currentMode === "color") {
-    console.log("color");
-  } else if (currentMode === "rainbow") {
-    rainbowColor();
-  } else if (currentMode === "eraser") {
-    console.log("eraser");
-  } else if (currentMode === "clear") {
-    console.log("clear");
+//When a new mode is passed
+function activateMode(newMode) {
+
+  //Remove the active class from the currentMode
+  if (currentMode === "blackBtn") {
+    blackButton.classList.remove("active");
+  } else if (currentMode === "colorBtn") {
+    colorButton.classList.remove("active");
+  } else if (currentMode === "rainbowBtn") {
+    rainbowButton.classList.remove("active");
+  } else if (currentMode === "eraserBtn") {
+    eraserButton.classList.remove("active");
+  }
+
+  //Add the active class to the newMode to get the effect
+  if (newMode === "blackBtn") {
+    blackButton.classList.add("active");
+  } else if (newMode === "colorBtn") {
+    colorButton.classList.add("active");
+  } else if (newMode === "rainbowBtn") {
+    rainbowButton.classList.add("active");
+  } else if (newMode === "eraserBtn") {
+    eraserButton.classList.add("active");
   }
 }
 
+//For Black button
+const blackButton = document.getElementById("blackBtn");
+blackButton.addEventListener("click", () => setCurrentMode("blackBtn"));
+
+//For Color button
+const colorButton = document.getElementById("colorBtn");
+colorButton.addEventListener("click", () => setCurrentMode("colorBtn"));
+
+
 //For Rainbow button
-const rainbowButton = document.getElementById("rainbow-mode");
+const rainbowButton = document.getElementById("rainbowBtn");
 rainbowButton.addEventListener("click", () => {
-  setCurrentMode("rainbow");
+  setCurrentMode("rainbowBtn");
 });
 
 function rainbowColor() {
@@ -56,22 +81,27 @@ function rainbowColor() {
 }
 
 //For eraser button
-const eraserButton = document.getElementById("eraser");
+const eraserButton = document.getElementById("eraserBtn");
 eraserButton.addEventListener("click", () => {
-  setCurrentMode("eraser");
+  setCurrentMode("eraserBtn");
   cellColor = "transparent";
 });
 
 //For clear button
-const clearButton = document.getElementById("clear");
+const clearButton = document.getElementById("clearBtn");
 clearButton.addEventListener("click", () => {
-  setCurrentMode("clear");
-  sketchArea.innerHTML = "";
+  reloadGrid();
 });
 
+//Remove all the previous grid & create a new one
+function reloadGrid() {
+  sketchArea.innerHTML = "";
+  createGrid();
+}
+
 //Create grid cells & place on the sketch area
-function createGrid() {
-  for (let i = 0; i < userToggle * userToggle; i++) {
+function createGrid(size = userToggle) {
+  for (let i = 0; i < size * size; i++) {
     const cell = document.createElement("div");
     cell.classList.add("grid-cell");
 
@@ -85,11 +115,11 @@ function createGrid() {
 function setColor(e) {
   if (currentMode === DEFAULT_MODE) {
     currentColor = DEFAULT_COLOR;
-  } else if (currentMode === "color") {
+  } else if (currentMode === "colorBtn") {
     currentColor = "blue";
-  } else if (currentMode === "rainbow") {
+  } else if (currentMode === "rainbowBtn") {
     currentColor = rainbowColor();
-  } else if (currentMode === "eraser") {
+  } else if (currentMode === "eraserBtn") {
     currentColor = "transparent";
   }
   e.target.style.backgroundColor = currentColor;
