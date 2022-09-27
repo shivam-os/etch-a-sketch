@@ -17,11 +17,15 @@
 
     <main>
       <div class="left-container">
-        <button id="blackBtn">Black</button>
-        <button id="colorBtn">Color</button>
+        <input type="color" value="#000000" id="colorPicker">
+        <label for="colorPicker"><button id="colorBtn">Color</button></label>
         <button id="rainbowBtn">Rainbow</button>
         <button id="eraserBtn">Eraser</button>
         <button id="clearBtn">Clear</button>
+        <div class="userDisplay">
+          <div id="sizeDisplay">16 X 16</div>
+          <input type="range" min="5" max="64" step="1" id="sizeSlider" value="16">
+        </div>
       </div>
 
       <div class="right-container">

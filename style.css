@@ -31,7 +31,7 @@ h1 {
 main {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  margin: 5rem 0;
 }
 
 /* ------ Left container ------ */
@@ -42,8 +42,37 @@ main {
   width: 20%;
 }
 
+/* Color picker */
+
+#colorPicker {
+  border-width: 0;
+  padding: 0;
+  height: 2rem;
+  width: 6rem;
+}
+
+#colorPicker:hover {
+  border: 5px solid var(--yellow);
+}
+
+/* Slider */
+
+#sizeDisplay {
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+#sizeSlider {
+  width: 6rem;
+  background: red;;
+}
+
+/* Button */
+
 button {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   font-family: "Roboto Mono", sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -74,8 +103,4 @@ button:hover {
   border: 1px solid var(--black);
   box-shadow: 3px 3px var(--black);
   display: grid;
-}
-
-.grid-cell {
-  border: 1px solid var(--black);
 }
